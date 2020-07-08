@@ -5,11 +5,15 @@ import React from 'react';
 import Todo from '../components/Todo';
 
 const TodoList = props => {
-    props.todos.map((todo) => {
-        return (
-            <Todo />
-        );
-    });
+    const {todos} = props;
+
+    return (
+        todos.map((todo) => {
+            return <Todo
+                        key={todo.id}
+                        todo={todo} />
+        })
+    );
 };
 
 export default TodoList;

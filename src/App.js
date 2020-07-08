@@ -11,12 +11,12 @@ class App extends React.Component {
       todos: [
         {
           task: 'Wash Dishes',
-          id: Date.now(),
+          id: 16435643564567,
           completed: false
         },
         {
           task: 'Bake Cookies',
-          id: Date.now(),
+          id: 536345634577,
           completed: false
         }
       ]
