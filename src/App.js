@@ -11,7 +11,7 @@ class App extends React.Component {
   constructor(){
     super();
     
-    const stateObj = JSON.stringify({
+    const stateObj = {
       todos: [
         {
           task: 'Wash Dishes',
@@ -24,13 +24,15 @@ class App extends React.Component {
           completed: false
         }
       ]
-    });
+    };
 
     if(!localStorage.getItem('state')){
-      localStorage.setItem('state', stateObj);
+      this.state = stateObj;
+      localStorage.setItem('state', JSON.stringify(stateObj));
     }
-
-    this.state = JSON.parse(localStorage.getItem('state'));
+    else{
+      this.state = JSON.parse(localStorage.getItem('state'));
+    }
   }
 
   addTodo = (event, todo) => {
@@ -44,7 +46,11 @@ class App extends React.Component {
       todos: [...this.state.todos, newTodo]
     });
 
-    localStorage.setItem('state', JSON.stringify(this.state));
+    const newState = {
+      todos: [...this.state.todos, newTodo]
+    };
+
+    localStorage.setItem('state', JSON.stringify(newState));
   };
 
   toggleCompleted = todoId => {

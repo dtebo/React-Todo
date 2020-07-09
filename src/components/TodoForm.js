@@ -1,4 +1,8 @@
 import React from 'react';
+import {
+    TextField,
+    Button
+} from '@material-ui/core';
 
 class TodoForm extends React.Component{
     constructor(){
@@ -26,22 +30,27 @@ class TodoForm extends React.Component{
 
     render(){
         return(
-            <form
-                onSubmit={this.handleSubmit}
-            >
-                <input 
-                    type='text'
-                    value={this.state.todo}
-                    name='todo'
-                    onChange={this.changeHandler}
-                    placeholder='...todo'
-                />
-                <button
-                    type='submit'
+            <div className='form-wrapper'>
+                 <form
+                    onSubmit={this.handleSubmit}
                 >
-                    Add Todo
-                </button>
-            </form>
+                    <TextField
+                        value={this.state.todo}
+                        name='todo'
+                        onChange={this.changeHandler}
+                        placeholder='...todo'
+                    />
+                    <Button
+                        className='add-todo'
+                        color='secondary'
+                        variant='contained'
+                        type='submit'
+                        size='medium'
+                    >
+                        Add Todo
+                    </Button>
+                </form>
+            </div>
         );
     }
 }

@@ -4,6 +4,10 @@ import React from 'react';
 
 import Todo from '../components/Todo';
 
+import {
+    Button
+} from '@material-ui/core';
+
 const TodoList = props => {
     const {todos} = props;
 
@@ -18,12 +22,15 @@ const TodoList = props => {
                     todo={todo}
                 />
             ))}
-            <button
+            <Button
                 className='clear-button'
+                variant='contained'
+                color='primary'
+                size='large'
                 onClick={(e) => props.clearCompleted(e)}
             >
                 Clear Completed
-            </button>
+            </Button>
         </div>
     );
 };
