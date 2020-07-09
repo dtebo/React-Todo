@@ -5,8 +5,9 @@
     margin: 20px;
     color: #fefefe;
     font-size: 1.5rem;
+    cursor: pointer;
 }
 
 .todo.completed{
-    text-decoration: line-through;
+    background-image: linear-gradient(50deg, #979797 0%, #adabac 30%, #d3d2d2 60%, #f3f0f0 100%);
 }
