@@ -11,7 +11,9 @@ const TodoList = props => {
         todos.map((todo) => {
             return <Todo
                         key={todo.id}
-                        todo={todo} />
+                        toggleCompleted={props.toggleCompleted}
+                        todo={todo}
+                    />
         })
     );
 };
