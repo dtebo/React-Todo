@@ -2,13 +2,16 @@ import React from 'react';
 import TodoList from './components/TodoList';
 import TodoForm from './components/TodoForm';
 
+import './App.css';
+
 class App extends React.Component {
   // you will need a place to store your state in this component.
   // design `App` to be the parent component of your application.
   // this component is going to take care of state, and any change handlers you need to work with your state
   constructor(){
     super();
-    this.state = {
+    
+    const stateObj = JSON.stringify({
       todos: [
         {
           task: 'Wash Dishes',
@@ -21,7 +24,13 @@ class App extends React.Component {
           completed: false
         }
       ]
-    };
+    });
+
+    if(!localStorage.getItem('state')){
+      localStorage.setItem('state', stateObj);
+    }
+
+    this.state = JSON.parse(localStorage.getItem('state'));
   }
 
   addTodo = (event, todo) => {
@@ -35,7 +44,7 @@ class App extends React.Component {
       todos: [...this.state.todos, newTodo]
     });
 
-    console.log(this.state.todos);
+    localStorage.setItem('state', JSON.stringify(this.state));
   };
 
   toggleCompleted = todoId => {
